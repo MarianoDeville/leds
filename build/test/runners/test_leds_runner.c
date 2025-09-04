@@ -16,6 +16,7 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_al_iniciar_todos_los_leds_estan_apagados(void);
+extern void test_prender_un_led_y_verificar_que_no_cambie_el_resto(void);
 
 
 /*=======Mock Management=====*/
@@ -89,13 +90,16 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
       UNITY_PRINT_EOL();
       UnityPrint("  test_al_iniciar_todos_los_leds_estan_apagados");
       UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_un_led_y_verificar_que_no_cambie_el_resto");
+      UNITY_PRINT_EOL();
       return 0;
     }
     return parse_status;
   }
 #endif
   UnityBegin("test_leds.c");
-  run_test(test_al_iniciar_todos_los_leds_estan_apagados, "test_al_iniciar_todos_los_leds_estan_apagados", 12);
+  run_test(test_al_iniciar_todos_los_leds_estan_apagados, "test_al_iniciar_todos_los_leds_estan_apagados", 13);
+  run_test(test_prender_un_led_y_verificar_que_no_cambie_el_resto, "test_prender_un_led_y_verificar_que_no_cambie_el_resto", 21);
 
   return UNITY_END();
 }
