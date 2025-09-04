@@ -6,6 +6,7 @@
 #ifndef UNITY_EXCLUDE_FLOAT
 #define UNITY_EXCLUDE_FLOAT
 #endif /* UNITY_EXCLUDE_FLOAT */
+#include "leds.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -14,7 +15,7 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_inicial(void);
+extern void test_al_iniciar_todos_los_leds_estan_apagados(void);
 
 
 /*=======Mock Management=====*/
@@ -30,12 +31,6 @@ static void CMock_Verify(void)
 static void CMock_Destroy(void)
 {
 }
-
-/*=======Setup (stub)=====*/
-void setUp(void) {}
-
-/*=======Teardown (stub)=====*/
-void tearDown(void) {}
 
 /*=======Test Reset Options=====*/
 void resetTest(void);
@@ -92,7 +87,7 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
     {
       UnityPrint("test_leds.");
       UNITY_PRINT_EOL();
-      UnityPrint("  test_inicial");
+      UnityPrint("  test_al_iniciar_todos_los_leds_estan_apagados");
       UNITY_PRINT_EOL();
       return 0;
     }
@@ -100,7 +95,7 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
   }
 #endif
   UnityBegin("test_leds.c");
-  run_test(test_inicial, "test_inicial", 3);
+  run_test(test_al_iniciar_todos_los_leds_estan_apagados, "test_al_iniciar_todos_los_leds_estan_apagados", 12);
 
   return UNITY_END();
 }
