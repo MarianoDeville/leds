@@ -2,11 +2,13 @@
 
 /*=======Automagically Detected Files To Include=====*/
 #include "unity.h"
+#include "cmock.h"
 /* injected defines for unity settings, etc */
 #ifndef UNITY_EXCLUDE_FLOAT
 #define UNITY_EXCLUDE_FLOAT
 #endif /* UNITY_EXCLUDE_FLOAT */
 #include "leds.h"
+#include "mock_errores.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -17,6 +19,12 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_al_iniciar_todos_los_leds_estan_apagados(void);
 extern void test_prender_un_led_y_verificar_que_no_cambie_el_resto(void);
+extern void test_prender_un_led_cualquiera_y_apagarlo(void);
+extern void test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio(void);
+extern void test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error(void);
+extern void test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error(void);
+extern void test_prender_todos_los_leds(void);
+extern void test_apagar_todos_los_leds(void);
 
 
 /*=======Mock Management=====*/
@@ -25,12 +33,15 @@ static void CMock_Init(void)
   GlobalExpectCount = 0;
   GlobalVerifyOrder = 0;
   GlobalOrderError = NULL;
+  mock_errores_Init();
 }
 static void CMock_Verify(void)
 {
+  mock_errores_Verify();
 }
 static void CMock_Destroy(void)
 {
+  mock_errores_Destroy();
 }
 
 /*=======Test Reset Options=====*/
@@ -92,14 +103,33 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
       UNITY_PRINT_EOL();
       UnityPrint("  test_prender_un_led_y_verificar_que_no_cambie_el_resto");
       UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_un_led_cualquiera_y_apagarlo");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_todos_los_leds");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_apagar_todos_los_leds");
+      UNITY_PRINT_EOL();
       return 0;
     }
     return parse_status;
   }
 #endif
   UnityBegin("test_leds.c");
-  run_test(test_al_iniciar_todos_los_leds_estan_apagados, "test_al_iniciar_todos_los_leds_estan_apagados", 13);
-  run_test(test_prender_un_led_y_verificar_que_no_cambie_el_resto, "test_prender_un_led_y_verificar_que_no_cambie_el_resto", 21);
+  run_test(test_al_iniciar_todos_los_leds_estan_apagados, "test_al_iniciar_todos_los_leds_estan_apagados", 28);
+  run_test(test_prender_un_led_y_verificar_que_no_cambie_el_resto, "test_prender_un_led_y_verificar_que_no_cambie_el_resto", 37);
+  run_test(test_prender_un_led_cualquiera_y_apagarlo, "test_prender_un_led_cualquiera_y_apagarlo", 44);
+  run_test(test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio, "test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio", 52);
+  run_test(test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error, "test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error", 61);
+  run_test(test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error, "test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error", 75);
+  run_test(test_prender_todos_los_leds, "test_prender_todos_los_leds", 89);
+  run_test(test_apagar_todos_los_leds, "test_apagar_todos_los_leds", 96);
 
+  CMock_Guts_MemFreeFinal();
   return UNITY_END();
 }
