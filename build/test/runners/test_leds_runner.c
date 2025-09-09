@@ -25,6 +25,15 @@ extern void test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_ge
 extern void test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error(void);
 extern void test_prender_todos_los_leds(void);
 extern void test_apagar_todos_los_leds(void);
+extern void test_prender_un_led_y_apagarlo_en_ambos_extremos(void);
+extern void test_prender_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_prendidos(void);
+extern void test_apagar_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_apagados(void);
+extern void test_prender_algunos_leds_despues_prender_todos_comprobar_que_todos_quedan_prendidos(void);
+extern void test_prender_todos_apagar_algunos_apagar_todos_comprobar_que_todos_quedan_apagados(void);
+extern void test_consultar_el_estado_de_un_led_encendido_y_comprobar_que_es_correcto(void);
+extern void test_consultar_el_estado_de_un_led_apagado_y_comprobar_que_es_correcto(void);
+extern void test_consultar_el_estado_de_todos_los_leds(void);
+extern void test_tratar_de_consultar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error(void);
 
 
 /*=======Mock Management=====*/
@@ -115,20 +124,47 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
       UNITY_PRINT_EOL();
       UnityPrint("  test_apagar_todos_los_leds");
       UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_un_led_y_apagarlo_en_ambos_extremos");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_prendidos");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_apagar_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_apagados");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_algunos_leds_despues_prender_todos_comprobar_que_todos_quedan_prendidos");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_prender_todos_apagar_algunos_apagar_todos_comprobar_que_todos_quedan_apagados");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_consultar_el_estado_de_un_led_encendido_y_comprobar_que_es_correcto");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_consultar_el_estado_de_un_led_apagado_y_comprobar_que_es_correcto");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_consultar_el_estado_de_todos_los_leds");
+      UNITY_PRINT_EOL();
+      UnityPrint("  test_tratar_de_consultar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error");
+      UNITY_PRINT_EOL();
       return 0;
     }
     return parse_status;
   }
 #endif
   UnityBegin("test_leds.c");
-  run_test(test_al_iniciar_todos_los_leds_estan_apagados, "test_al_iniciar_todos_los_leds_estan_apagados", 28);
-  run_test(test_prender_un_led_y_verificar_que_no_cambie_el_resto, "test_prender_un_led_y_verificar_que_no_cambie_el_resto", 37);
-  run_test(test_prender_un_led_cualquiera_y_apagarlo, "test_prender_un_led_cualquiera_y_apagarlo", 44);
-  run_test(test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio, "test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio", 52);
-  run_test(test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error, "test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error", 61);
-  run_test(test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error, "test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error", 75);
-  run_test(test_prender_todos_los_leds, "test_prender_todos_los_leds", 89);
-  run_test(test_apagar_todos_los_leds, "test_apagar_todos_los_leds", 96);
+  run_test(test_al_iniciar_todos_los_leds_estan_apagados, "test_al_iniciar_todos_los_leds_estan_apagados", 17);
+  run_test(test_prender_un_led_y_verificar_que_no_cambie_el_resto, "test_prender_un_led_y_verificar_que_no_cambie_el_resto", 26);
+  run_test(test_prender_un_led_cualquiera_y_apagarlo, "test_prender_un_led_cualquiera_y_apagarlo", 33);
+  run_test(test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio, "test_prender_mas_de_un_led_apagar_uno_y_verificar_que_el_resto_siguen_sin_cambio", 41);
+  run_test(test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error, "test_tratar_de_manipular_un_led_fuera_de_rango_y_comprobar_que_se_genera_un_error", 50);
+  run_test(test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error, "test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error", 64);
+  run_test(test_prender_todos_los_leds, "test_prender_todos_los_leds", 78);
+  run_test(test_apagar_todos_los_leds, "test_apagar_todos_los_leds", 85);
+  run_test(test_prender_un_led_y_apagarlo_en_ambos_extremos, "test_prender_un_led_y_apagarlo_en_ambos_extremos", 93);
+  run_test(test_prender_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_prendidos, "test_prender_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_prendidos", 103);
+  run_test(test_apagar_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_apagados, "test_apagar_algunos_leds_mas_de_una_vez_y_verificar_que_siguen_apagados", 113);
+  run_test(test_prender_algunos_leds_despues_prender_todos_comprobar_que_todos_quedan_prendidos, "test_prender_algunos_leds_despues_prender_todos_comprobar_que_todos_quedan_prendidos", 124);
+  run_test(test_prender_todos_apagar_algunos_apagar_todos_comprobar_que_todos_quedan_apagados, "test_prender_todos_apagar_algunos_apagar_todos_comprobar_que_todos_quedan_apagados", 134);
+  run_test(test_consultar_el_estado_de_un_led_encendido_y_comprobar_que_es_correcto, "test_consultar_el_estado_de_un_led_encendido_y_comprobar_que_es_correcto", 145);
+  run_test(test_consultar_el_estado_de_un_led_apagado_y_comprobar_que_es_correcto, "test_consultar_el_estado_de_un_led_apagado_y_comprobar_que_es_correcto", 152);
+  run_test(test_consultar_el_estado_de_todos_los_leds, "test_consultar_el_estado_de_todos_los_leds", 158);
+  run_test(test_tratar_de_consultar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error, "test_tratar_de_consultar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_error", 166);
 
   CMock_Guts_MemFreeFinal();
   return UNITY_END();
