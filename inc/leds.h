@@ -3,8 +3,8 @@
 
 #include <stdint-gcc.h>
 
-#define ALL_LED_OFF         0X0000
-#define ALL_LED_ON          ~ALL_LED_OFF
+#define ALL_LED_OFF 0X0000
+#define ALL_LED_ON  ~ALL_LED_OFF
 
 typedef enum {
 
