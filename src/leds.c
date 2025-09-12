@@ -2,8 +2,8 @@
 #include "leds.h"
 #include "errores.h"
 
-#define FIRST_BIT           1
-#define LED_TO_BIT_OFFSET   1
+#define FIRST_BIT         1
+#define LED_TO_BIT_OFFSET 1
 
 static uint16_t * puerto;
 
@@ -11,7 +11,7 @@ static bool IsLedValid(int led) {
 
     bool result = led >= 1 && led <= 16;
 
-    if(!result) {
+    if (!result) {
 
         Alerta("El led no es valido");
     }
@@ -20,7 +20,7 @@ static bool IsLedValid(int led) {
 
 static uint16_t LedToMask(int led) {
 
-    if(!IsLedValid(led)) {
+    if (!IsLedValid(led)) {
 
         return 0;
     }
@@ -49,13 +49,13 @@ void LedsAllTurnOn(void) {
 }
 
 void LedsAllTurnOff(void) {
-    
+
     *puerto = ALL_LED_OFF;
 }
 
 LedState_t LedGetState(int led) {
-      
-    return (*puerto & LedToMask(led))? LED_PRENDIDO: LED_APAGADO;
+
+    return (*puerto & LedToMask(led)) ? LED_PRENDIDO : LED_APAGADO;
 }
 
 int LedGetAllState(void) {

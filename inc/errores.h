@@ -19,9 +19,9 @@ typedef enum gravedad_e {
  */
 
 void RegistrarMensaje(gravedad_t gravedad, const char * funcion, int linea, const char * mensaje);
-#define Error(mensaje) RegistrarMensaje(ERROR, __FUNCTION__, __LINE__, mensaje)
-#define Alerta(mensaje) RegistrarMensaje(ALERTA, __FUNCTION__, __LINE__, mensaje)
+#define Error(mensaje)       RegistrarMensaje(ERROR, __FUNCTION__, __LINE__, mensaje)
+#define Alerta(mensaje)      RegistrarMensaje(ALERTA, __FUNCTION__, __LINE__, mensaje)
 #define Informacion(mensaje) RegistrarMensaje(INFORMACION, __FUNCTION__, __LINE__, mensaje)
-#define Registrar(mensaje) RegistrarMensaje(DEPURACION, __FUNCTION__, __LINE__, mensaje)
+#define Registrar(mensaje)   RegistrarMensaje(DEPURACION, __FUNCTION__, __LINE__, mensaje)
 
 #endif

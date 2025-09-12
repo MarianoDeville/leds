@@ -10,7 +10,6 @@ void setUp(void) {
 }
 
 void tearDown(void) {
-
 }
 
 // iniciar el driver y revisar que todos los leds esten apagados
@@ -67,7 +66,7 @@ void test_tratar_de_apagar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_erro
     RegistrarMensaje_IgnoreArg_linea();
     LedsTurnOff(0);
     TEST_ASSERT_EQUAL_HEX16(ALL_LED_OFF, puerto_virtual);
-    
+
     RegistrarMensaje_Expect(ALERTA, "IsLedValid", 0, "El led no es valido");
     RegistrarMensaje_IgnoreArg_linea();
     LedsTurnOff(17);
@@ -83,7 +82,7 @@ void test_prender_todos_los_leds(void) {
 
 // apagar todos los leds
 void test_apagar_todos_los_leds(void) {
-    
+
     LedsAllTurnOn();
     LedsAllTurnOff();
     TEST_ASSERT_EQUAL_HEX16(ALL_LED_OFF, puerto_virtual);
@@ -168,7 +167,7 @@ void test_tratar_de_consultar_leds_fuera_de_rango_y_comprobar_que_se_genera_un_e
     RegistrarMensaje_Expect(ALERTA, "IsLedValid", 0, "El led no es valido");
     RegistrarMensaje_IgnoreArg_linea();
     TEST_ASSERT_EQUAL(LED_APAGADO, LedGetState(0));
-    
+
     RegistrarMensaje_Expect(ALERTA, "IsLedValid", 0, "El led no es valido");
     RegistrarMensaje_IgnoreArg_linea();
     TEST_ASSERT_EQUAL(LED_APAGADO, LedGetState(17));
